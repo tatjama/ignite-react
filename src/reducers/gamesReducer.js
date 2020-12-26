@@ -1,22 +1,17 @@
 const initState = {
     popular: [],
     newGames: [],
-    upcoming: []
+    upcoming: [],
+    searched: []
 }
 
 const gamesReducer = (state = initState, action) => {
     switch(action.type){
         case "FETCH_GAMES":
-            return{...state}
+            return{...state, popular: action.payload.popular}
          default: 
         return{...state}    
     }
-}
-//ACTION CREATOR
-const fetchGames = () => {
-    return {
-        type: "FETCH_GAMES",
-    }    
 }
 
 export default gamesReducer;
