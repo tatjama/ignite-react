@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadGames } from '../actions/gamesAction';
+//Components and pages
 import Game from '../components/Game';
+import GameDetails from '../components/GameDetails';
 //styled animation
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
@@ -18,6 +20,7 @@ const Home = () => {
    console.log(upcoming)
     return (
         <GameList>
+            <GameDetails/>
             <h2>Upcoming games</h2>
             <Games>
                 {upcoming.map((game) => {
