@@ -8,8 +8,15 @@ import GameDetails from '../components/GameDetails';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 
+import { useLocation } from 'react-router-dom';
+
 
 const Home = () => {
+    //get current location
+    const location = useLocation()
+    const pathId = location.pathname.split('/')[2];
+    console.log(pathId)
+    //Fetch game
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(loadGames())
@@ -17,10 +24,11 @@ const Home = () => {
 
    const { popular, upcoming, newGames } = useSelector((state) => state.games
    )
-   console.log(upcoming)
+
+   
     return (
-        <GameList>            
-            <GameDetails/>
+        <GameList>      
+        {pathId && <GameDetails/>}
             <h2>Upcoming games</h2>
             <Games>
                 {upcoming.map((game) => {

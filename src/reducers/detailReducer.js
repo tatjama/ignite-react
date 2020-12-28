@@ -1,4 +1,4 @@
-const initState = { game: {}, screen: {}}
+const initState = { game: {platforms: []}, screen: {results: []}}
 
  const detailReducer = (store = initState, action) => {
     
