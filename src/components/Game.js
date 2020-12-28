@@ -12,12 +12,12 @@ import { Link } from 'react-router-dom';
 const Game = ({name, image, id, released}) => {
     const dispatch = useDispatch();
     const loadDetailsHandler = () => {
+        document.body.style.overflow = "hidden";
         dispatch(loadDetails(id))
         console.log(id)
     } 
 
-    return (
-        
+    return (        
             <StyledGame onClick={loadDetailsHandler}>
                 <Link to = {`/game/${id}`}>
                     <h3>{name}</h3>
@@ -34,6 +34,7 @@ min-height: 30vh;
 box-shadow: 0px 5px 20px rgba(0,0,0, 0.2);
 text-align: center;
 border-radius: 1rem;
+overflow: hidden;
 cursor: pointer;
 img{
     width: 100%;
