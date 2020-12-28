@@ -19,7 +19,7 @@ const Home = () => {
    )
    console.log(upcoming)
     return (
-        <GameList>
+        <GameList>            
             <GameDetails/>
             <h2>Upcoming games</h2>
             <Games>
