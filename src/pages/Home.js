@@ -6,7 +6,7 @@ import Game from '../components/Game';
 import GameDetails from '../components/GameDetails';
 //styled animation
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import {motion, AnimatePresence, AnimateSharedLayout} from 'framer-motion';
 
 import { useLocation } from 'react-router-dom';
 
@@ -15,7 +15,6 @@ const Home = () => {
     //get current location
     const location = useLocation()
     const pathId = location.pathname.split('/')[2];
-    console.log(pathId)
     //Fetch game
     const dispatch = useDispatch()
     useEffect(() => {
@@ -24,53 +23,54 @@ const Home = () => {
 
    const { popular, upcoming, newGames } = useSelector((state) => state.games
    )
-
    
     return (
-        <GameList>      
-        {pathId && <GameDetails/>}
-            <h2>Upcoming games</h2>
-            <Games>
-                {upcoming.map((game) => {
-                    return (
-                        <Game 
-                            name = {game.name} 
-                            image = {game.background_image} 
-                            released = {game.released} 
-                            id = {game.id} 
-                            key = {game.id}
-                        />
-                    )
-                })}
-            </Games>
-            <h2>Popular games</h2>
-            <Games>
-                {popular.map((game) => {
-                    return (
-                        <Game 
-                            name = {game.name} 
-                            image = {game.background_image} 
-                            released = {game.released} 
-                            id = {game.id} 
-                            key = {game.id}
-                        />
-                    )
-                })}
-            </Games>
-            <h2>New games</h2>
-            <Games>
-                {newGames.map((game) => {
-                    return (
-                        <Game 
-                            name = {game.name} 
-                            image = {game.background_image} 
-                            released = {game.released} 
-                            id = {game.id} 
-                            key = {game.id}
-                        />
-                    )
-                })}
-            </Games>
+        <GameList>    
+        <AnimateSharedLayout to = "crossfade">      
+            <AnimatePresence>{pathId && <GameDetails pathId={pathId}/>}</AnimatePresence>
+                <h2>Upcoming games</h2>
+                <Games>
+                    {upcoming.map((game) => {
+                        return (
+                            <Game 
+                                name = {game.name} 
+                                image = {game.background_image} 
+                                released = {game.released} 
+                                id = {game.id} 
+                                key = {game.id}
+                            />
+                        )
+                    })}
+                </Games>
+                <h2>Popular games</h2>
+                <Games>
+                    {popular.map((game) => {
+                        return (
+                            <Game 
+                                name = {game.name} 
+                                image = {game.background_image} 
+                                released = {game.released} 
+                                id = {game.id} 
+                                key = {game.id}
+                            />
+                        )
+                    })}
+                </Games>
+                <h2>New games</h2>
+                <Games>
+                    {newGames.map((game) => {
+                        return (
+                            <Game 
+                                name = {game.name} 
+                                image = {game.background_image} 
+                                released = {game.released} 
+                                id = {game.id} 
+                                key = {game.id}
+                            />
+                        )
+                    })}
+                </Games>
+            </AnimateSharedLayout>
         </GameList>
     )
 }

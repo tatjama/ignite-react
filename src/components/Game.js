@@ -11,19 +11,23 @@ import { smallImage } from '../util';
 
 
 const Game = ({name, image, id, released}) => {
+    const stringPathId = id.toString();
     const dispatch = useDispatch();
     const loadDetailsHandler = () => {
         document.body.style.overflow = "hidden";
         dispatch(loadDetails(id))
-        console.log(id)
     } 
 
     return (        
-            <StyledGame onClick={loadDetailsHandler}>
+            <StyledGame layoutId = {stringPathId} onClick={loadDetailsHandler}>
                 <Link to = {`/game/${id}`}>
-                    <h3>{name}</h3>
+                    <motion.h3 layoutId = { `title ${stringPathId}` }>{name}</motion.h3>
                     <p>{released}</p>
-                    <img src={smallImage(image, 640)} alt={name}/>
+                    <motion.img 
+                        layoutId = {`image ${stringPathId}`} 
+                        src={smallImage(image, 640)} 
+                        alt={name}
+                    />
                 </Link>
             </StyledGame>
         
