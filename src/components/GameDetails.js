@@ -149,6 +149,15 @@ const Detail = styled(motion.div)`
     color:black;
     img{
         width: 100%;
+    } 
+    @media screen and (max-width:450px){
+        padding: 2rem 2rem;
+        h3{
+            font-size: 1rem;
+        }
+        p{
+            font-size: .7rem;
+        }
     }
 `
 const Stats = styled(motion.div)`
@@ -160,6 +169,13 @@ const Stats = styled(motion.div)`
         height: 2rem;
         display: inline;
     }
+    @media screen and (max-width:450px){
+        flex-direction: column;
+        img{
+            width:1rem;
+            height:1rem;
+        }
+    }
 `
 const Info = styled(motion.div)`
     text-align: center;
@@ -169,6 +185,11 @@ const Platforms = styled(motion.div)`
     justify-content: space-evenly;
     img{
         margin-left: 3rem;
+    }
+    @media screen and (max-width:450px){
+        img{
+            margin: 0rem 1rem;
+        }
     }
 `
 const Media = styled(motion.div)` 

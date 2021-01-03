@@ -23,7 +23,7 @@ const Game = ({name, image, id, released}) => {
     return (        
             <StyledGame variants = {popup} initial = "hidden" animate = "show" layoutId = {stringPathId} onClick={loadDetailsHandler}>
                 <Link to = {`/game/${id}`}>
-                    <motion.h3 layoutId = { `title ${stringPathId}` }>{name}</motion.h3>
+                    <motion.h4 layoutId = { `title ${stringPathId}` }>{name}</motion.h4>
                     <p>{released}</p>
                     <motion.img 
                         layoutId = {`image ${stringPathId}`} 

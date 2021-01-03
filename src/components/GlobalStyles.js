@@ -16,10 +16,12 @@ const GlobalStyles = createGlobalStyle`
         &::-webkit-scrollbar-track{
             background-color: white;
         }
+        
     }
     body{
         font-family: 'Montserrat', sans-serif;
         width: 100%;
+        overflow-x: hidden;
     }
     h2{
         font-family: 'Abril FatFace', cursive;
@@ -29,6 +31,11 @@ const GlobalStyles = createGlobalStyle`
     }
     h3{
         font-size: 1.3rem;
+        color: #333;
+        padding: 1.5rem 0rem;
+    }
+    h4{
+        font-size: 1rem;
         color: #333;
         padding: 1.5rem 0rem;
     }
