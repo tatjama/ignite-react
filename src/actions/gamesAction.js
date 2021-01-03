@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { popularGamesURL, upcomingGamesURL, newGamesURL, searchGamesURL } from '../api';
 
-export const loadGames = () => async (dispatch) =>{
+export const loadGames = (size) => async (dispatch) =>{
     //AXIOS API
-    const popularData = await axios.get(popularGamesURL());
-    const upcomingData = await axios.get(upcomingGamesURL());
-    const newGamesData = await axios.get(newGamesURL());
+    const popularData = await axios.get(popularGamesURL(size));
+    const upcomingData = await axios.get(upcomingGamesURL(size));
+    const newGamesData = await axios.get(newGamesURL(size));
 
     dispatch({
         type: "FETCH_GAMES",
@@ -17,8 +17,8 @@ export const loadGames = () => async (dispatch) =>{
     })    
 }
 
-export const fetchSearch = (game_name) => async(dispatch) => {    
-    const searchedData = await axios.get(searchGamesURL(game_name));
+export const fetchSearch = (game_name, size) => async(dispatch) => {    
+    const searchedData = await axios.get(searchGamesURL(game_name, size));
     dispatch({
         type: "FETCH_SEARCHED",
         payload:{            

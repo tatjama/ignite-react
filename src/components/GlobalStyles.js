@@ -55,5 +55,25 @@ const GlobalStyles = createGlobalStyle`
         font-weight: bold;
         font-family: "Montserrat", sans-serif;
     }
+    label{
+        padding: 1rem;
+        font-size: 1.5rem;
+        
+    }
+    select{
+        margin: 1rem;
+        padding: 0.2rem 1rem;
+        border: none;
+        box-shadow: 0 0 30px  rgba(0, 0, 0, 0.2);
+        font-size: 1.2rem;
+    }
+    @media screen and (max-width: 450px){
+        label{
+            font-size: 0.9rem;
+        }
+        select{
+            font-size: 0.9rem;
+        }
+    }
 `
 export default GlobalStyles

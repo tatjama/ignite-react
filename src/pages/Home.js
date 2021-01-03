@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadGames } from '../actions/gamesAction';
 //Components and pages
@@ -13,21 +13,27 @@ import { useLocation } from 'react-router-dom';
 
 
 const Home = () => {
+    const [pageSize, setPageSize] = useState(10)
     //get current location
     const location = useLocation()
     const pathId = location.pathname.split('/')[2];
     //Fetch game
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(loadGames())
-    },[dispatch])
+        dispatch(loadGames(pageSize))
+    },[dispatch, pageSize])
 
    const { popular, upcoming, newGames, searched } = useSelector((state) => state.games
    )
+   const selectHandler = (e) => {
+    setPageSize(e.target.value)
+   }
    
     return (
-        <GameList variants = {fadeIn} initial = "hidden" animate = "show">    
-        <AnimateSharedLayout to = "crossfade">      
+        <GameList variants = {fadeIn} initial = "hidden" animate = "show">   
+         
+        <AnimateSharedLayout to = "crossfade">     
+         
             <AnimatePresence>{pathId && <GameDetails pathId={pathId}/>}</AnimatePresence>
                {(searched.length !== 0) && <><h2>Searched games</h2>
                 <Games>
@@ -44,6 +50,13 @@ const Home = () => {
                     })}
                 </Games></>}
                 <h2>Upcoming games</h2>
+                <label htmlFor="page_size"> Choose page size</label>
+                <select id="page_size" onChange = {selectHandler} value = {pageSize}>
+                    <option value = "5">5</option>
+                    <option value = "10">10</option>
+                    <option value = "15">15</option>
+                    <option value = "20">20</option>
+                </select>
                 <Games>
                     {upcoming.map((game) => {
                         return (

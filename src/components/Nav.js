@@ -11,13 +11,14 @@ import { fetchSearch } from '../actions/gamesAction';
 
 const Nav = () => {
     const [valueInput, setValueInput] = useState("")
+    const pageSize = 9
     const inputHandler = (e) => {
         setValueInput(e.target.value)
     }
     const dispatch = useDispatch();
     const submitHandler = (e)  =>{
         e.preventDefault()
-       dispatch(fetchSearch(valueInput))
+       dispatch(fetchSearch(valueInput, pageSize))
        setValueInput("")
     }
     const clearSearch = () => {
